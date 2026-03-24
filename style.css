@@ -1,5 +1,5 @@
-* { 
-    box-sizing: border-box; 
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -8,7 +8,8 @@ body {
     background: radial-gradient(circle at center 70%, #152238 0%, #050810 100%);
     overflow: hidden;
     height: 100vh;
-    height: 100dvh; /* Soporte perfecto para iPhone (ignora la barra superior de Safari) */
+    height: 100dvh;
+    /* Soporte perfecto para iPhone (ignora la barra superior de Safari) */
     font-family: 'Playfair Display', serif;
     color: #fff;
     display: flex;
@@ -31,21 +32,36 @@ body {
     background: #FFD700;
     border-radius: 50%;
     /* Optimización de sombras para no trabar */
-    box-shadow: 0 0 8px 2px #FFD700;
+    box-shadow: 0 0 4px 1px #FFD700;
     opacity: 0;
-    will-change: transform, opacity;
     animation: glowPulse var(--dur, 3s) infinite alternate, floatUp var(--float-dur, 15s) infinite linear;
 }
 
 @keyframes glowPulse {
-    0% { opacity: 0; transform: scale(0.5); }
-    50% { opacity: 1; transform: scale(1.2); }
-    100% { opacity: 0; transform: scale(0.5); }
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
 }
 
 @keyframes floatUp {
-    0% { transform: translateY(100vh) translateX(0); }
-    100% { transform: translateY(-30vh) translateX(100px); }
+    0% {
+        transform: translateY(100vh) translateX(0);
+    }
+
+    100% {
+        transform: translateY(-30vh) translateX(100px);
+    }
 }
 
 .glass-container {
@@ -72,13 +88,15 @@ body {
     width: 90%;
     opacity: 0;
     transform: translateY(40px);
-    will-change: transform, opacity;
-    animation: cardAppear 2s ease-out forwards 4s; 
+    animation: cardAppear 2s ease-out forwards 4s;
     pointer-events: auto;
 }
 
 @keyframes cardAppear {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .title {
@@ -107,8 +125,15 @@ body {
 }
 
 @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
 }
 
 .bouquet {
@@ -120,7 +145,7 @@ body {
     z-index: 10;
     display: flex;
     justify-content: center;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .flower-wrapper {
@@ -129,7 +154,6 @@ body {
     left: var(--left, 50%);
     z-index: var(--z-index, 10);
     transform: scale(var(--scale, 1));
-    will-change: transform;
 }
 
 .stem {
@@ -142,13 +166,14 @@ body {
     border-radius: 4px;
     height: 0;
     transform: translateX(-50%) rotate(var(--stem-angle));
-    will-change: height, transform;
     animation: growStem 2s ease-out forwards;
     animation-delay: var(--delay, 0s);
 }
 
 @keyframes growStem {
-    to { height: var(--stem-height); }
+    to {
+        height: var(--stem-height);
+    }
 }
 
 .leaf {
@@ -158,7 +183,6 @@ body {
     background: linear-gradient(135deg, #3a8a43, #15451a);
     opacity: 0;
     transform: scale(0);
-    will-change: transform, opacity;
     animation: growLeaf 1.5s ease-out forwards;
     animation-delay: var(--leaf-delay, 0s);
 }
@@ -176,7 +200,10 @@ body {
 }
 
 @keyframes growLeaf {
-    to { opacity: 1; transform: scale(var(--leaf-scale, 1)) rotate(var(--leaf-angle, 0deg)); }
+    to {
+        opacity: 1;
+        transform: scale(var(--leaf-scale, 1)) rotate(var(--leaf-angle, 0deg));
+    }
 }
 
 .bloom {
@@ -186,33 +213,32 @@ body {
     transform: translateX(-50%) rotate(calc(var(--stem-angle) * -1));
     perspective: 800px;
     transform-style: preserve-3d;
-    will-change: transform;
 }
 
 .petal {
     position: absolute;
-    bottom: 0; 
+    bottom: 0;
     left: 0;
     /* Girasol: Pétalos más angostos y largos */
-    margin-left: -12.5px; 
+    margin-left: -12.5px;
     width: 25px;
     height: 125px;
     background: linear-gradient(to top, #ff8f00 0%, #ffc107 35%, #ffee58 75%, #fff59d 100%);
-    border-radius: 50% 50% 15% 15%; /* Punta más marcada */
+    border-radius: 50% 50% 15% 15%;
+    /* Punta más marcada */
     transform-origin: bottom center;
     border: none;
-    
+
     transform: rotateZ(var(--rot)) rotateX(-90deg) scale(0);
     opacity: 0;
-    will-change: transform, opacity;
     animation: openPetal 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     animation-delay: var(--petal-delay, 2s);
 }
 
 @keyframes openPetal {
-    to { 
-        opacity: 1; 
-        transform: rotateZ(var(--rot)) rotateX(var(--tilt)) scale(var(--scale)); 
+    to {
+        opacity: 1;
+        transform: rotateZ(var(--rot)) rotateX(var(--tilt)) scale(var(--scale));
     }
 }
 
@@ -220,38 +246,42 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateZ(8px) scale(0); /* Más resaltado sobre pétalos */
+    transform: translateZ(8px) scale(0);
     width: 65px;
     height: 65px;
     margin-left: -32.5px;
     margin-top: -32.5px;
-    
-    /* Textura hiperrealista de semillas de girasol cruzadas (fibonacci visual) */
+
     background-color: #2e1509;
-    background-image: 
-      radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, transparent 70%),
-      repeating-linear-gradient(45deg, rgba(0,0,0,0.4) 0, rgba(0,0,0,0.4) 1.5px, transparent 1.5px, transparent 3px),
-      repeating-linear-gradient(-45deg, rgba(0,0,0,0.4) 0, rgba(0,0,0,0.4) 1.5px, transparent 1.5px, transparent 3px);
-    
+    background-image:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.6) 0%, transparent 70%),
+        repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0.4) 1.5px, transparent 1.5px, transparent 3px),
+        repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0.4) 1.5px, transparent 1.5px, transparent 3px);
+
     border-radius: 50%;
-    box-shadow: 0 0 15px rgba(0,0,0,0.9), inset 0 0 5px rgba(0,0,0,0.8);
-    will-change: transform;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9), inset 0 0 5px rgba(0, 0, 0, 0.8);
     animation: popCenter 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     animation-delay: var(--center-delay, 3s);
 }
 
 @keyframes popCenter {
-    to { transform: translateZ(5px) scale(1); }
+    to {
+        transform: translateZ(5px) scale(1);
+    }
 }
 
 @media (max-width: 768px) {
     .title {
         font-size: 2.2rem;
     }
+
     .message {
         font-size: 1rem;
     }
+
     .glass-card {
         padding: 1.5rem 2rem;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
     }
 }
