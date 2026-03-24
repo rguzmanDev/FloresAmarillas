@@ -12,7 +12,7 @@ def dibujar_flor(t, x, y, size):
     t.penup()
     t.goto(x, y)
     t.pendown()
-    t.setheading(90)
+    t.setheading(90) 
     
     # Dibujar el Tallo
     t.color("darkgreen")
